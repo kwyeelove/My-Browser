@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainTabBar" customModule="GS_SHOP" customModuleProvider="target">
+            <connections>
+                <outlet property="cateLbl" destination="Ycr-pF-wfL" id="wP3-lU-Df9"/>
+                <outlet property="historyLbl" destination="lFl-gy-z3v" id="OXr-j7-ITu"/>
+                <outlet property="homeLbl" destination="hfh-n4-eXo" id="Lbs-16-Nbs"/>
+                <outlet property="myShopLbl" destination="CxY-0l-cgL" id="rg1-CN-AhV"/>
+                <outlet property="recentlyImgView" destination="yaK-sq-ZEf" id="GcC-lp-z5F"/>
+                <outlet property="wishLbl" destination="BIF-k1-lly" id="YVZ-in-rdC"/>
+                <outletCollection property="tabBarImageViews" destination="id0-DQ-XHg" collectionClass="NSMutableArray" id="cAd-Ou-bvC"/>
+                <outletCollection property="tabBarImageViews" destination="BYt-MP-riA" collectionClass="NSMutableArray" id="q8z-BS-dCe"/>
+                <outletCollection property="tabBarImageViews" destination="YEe-hd-A9y" collectionClass="NSMutableArray" id="Dok-l3-q6g"/>
+                <outletCollection property="tabBarImageViews" destination="ztM-Es-cjZ" collectionClass="NSMutableArray" id="z7b-Oh-GrF"/>
+                <outletCollection property="tabBarButtons" destination="4jQ-h4-8UM" collectionClass="NSMutableArray" id="0Rb-AZ-dhR"/>
+                <outletCollection property="tabBarButtons" destination="XHB-cB-dUN" collectionClass="NSMutableArray" id="M3g-wT-1F5"/>
+                <outletCollection property="tabBarButtons" destination="lEi-bc-HzM" collectionClass="NSMutableArray" id="cI0-up-aKw"/>
+                <outletCollection property="tabBarButtons" destination="3sk-xQ-1OF" collectionClass="NSMutableArray" id="6iM-PX-Bf7"/>
+                <outletCollection property="tabBarButtons" destination="A5o-9H-tdf" collectionClass="NSMutableArray" id="vmb-LY-0hP"/>
+                <outletCollection property="tabBarImageViews" destination="F6u-fj-5dI" collectionClass="NSMutableArray" id="g5a-5E-ZBZ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="jqa-rO-kEp">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pxd-al-Ax4" userLabel="Home View">
+                    <rect key="frame" x="0.0" y="0.0" width="64" height="50"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_tabbar_home_nor" highlightedImage="icon_tabbar_home_pre" translatesAutoresizingMaskIntoConstraints="NO" id="id0-DQ-XHg">
+                            <rect key="frame" x="15.5" y="3" width="33" height="33"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="33" id="9kM-zC-QO2"/>
+                                <constraint firstAttribute="height" constant="33" id="Hx9-wG-qix"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="홈" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfh-n4-eXo">
+                            <rect key="frame" x="0.0" y="36" width="64" height="12"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="12" id="wTw-Uf-JDF"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jQ-h4-8UM">
+                            <rect key="frame" x="0.0" y="0.0" width="64" height="50"/>
+                            <accessibility key="accessibilityConfiguration" hint="홈 탭으로 이동합니다." label="홈으로 탭 이동">
+                                <accessibilityTraits key="traits" button="YES"/>
+                            </accessibility>
+                            <connections>
+                                <action selector="tabBarAction:" destination="-1" eventType="touchUpInside" id="iDS-Az-Lnx"/>
+                                <action selector="tabBarTouchDownInside:" destination="-1" eventType="touchDragInside" id="5Qa-4I-885"/>
+                                <action selector="tabBarTouchDownInside:" destination="-1" eventType="touchDown" id="zWB-ua-HO8"/>
+                                <action selector="tabBarTouchUpOutSide:" destination="-1" eventType="touchDragOutside" id="D5W-fV-swm"/>
+                                <action selector="tabBarTouchUpOutSide:" destination="-1" eventType="touchUpOutside" id="kPc-uy-7FW"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="4jQ-h4-8UM" firstAttribute="height" secondItem="Pxd-al-Ax4" secondAttribute="height" id="B24-Xx-HC6"/>
+                        <constraint firstItem="hfh-n4-eXo" firstAttribute="width" secondItem="Pxd-al-Ax4" secondAttribute="width" id="D2Y-jF-eja"/>
+                        <constraint firstItem="hfh-n4-eXo" firstAttribute="top" secondItem="Pxd-al-Ax4" secondAttribute="top" constant="36" id="D8R-ts-Mfk"/>
+                        <constraint firstItem="4jQ-h4-8UM" firstAttribute="centerY" secondItem="Pxd-al-Ax4" secondAttribute="centerY" id="FhU-xu-Ijg"/>
+                        <constraint firstItem="4jQ-h4-8UM" firstAttribute="centerX" secondItem="Pxd-al-Ax4" secondAttribute="centerX" id="UaG-mK-VfP"/>
+                        <constraint firstItem="id0-DQ-XHg" firstAttribute="centerX" secondItem="Pxd-al-Ax4" secondAttribute="centerX" id="f7i-UX-75Q"/>
+                        <constraint firstItem="4jQ-h4-8UM" firstAttribute="width" secondItem="Pxd-al-Ax4" secondAttribute="width" id="w8g-jT-DYA"/>
+                        <constraint firstItem="id0-DQ-XHg" firstAttribute="top" secondItem="Pxd-al-Ax4" secondAttribute="top" constant="3" id="xIt-jT-SXy"/>
+                        <constraint firstItem="hfh-n4-eXo" firstAttribute="centerX" secondItem="Pxd-al-Ax4" secondAttribute="centerX" id="yEb-pp-YdG"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FXh-Xi-6E5" userLabel="Cate View">
+                    <rect key="frame" x="64" y="0.0" width="64" height="50"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_tabbar_cate_nor" highlightedImage="icon_tabbar_cate_pre" translatesAutoresizingMaskIntoConstraints="NO" id="BYt-MP-riA">
+                            <rect key="frame" x="15.5" y="3" width="33" height="33"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="33" id="hmD-n1-KCm"/>
+                                <constraint firstAttribute="height" constant="33" id="kGk-cZ-A7y"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카테고리" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ycr-pF-wfL">
+                            <rect key="frame" x="0.0" y="36" width="64" height="12"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="12" id="fAQ-cv-nn9"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XHB-cB-dUN">
+                            <rect key="frame" x="0.0" y="0.0" width="64" height="50"/>
+                            <accessibility key="accessibilityConfiguration" hint="카테고리 메뉴가 왼쪽에서 열립니다" label="카테고리 탭으로 이동">
+                                <accessibilityTraits key="traits" button="YES"/>
+                            </accessibility>
+                            <connections>
+                                <action selector="tabBarAction:" destination="-1" eventType="touchUpInside" id="6XG-Qb-Y5u"/>
+                                <action selector="tabBarTouchDownInside:" destination="-1" eventType="touchDown" id="BRS-3b-Ob6"/>
+                                <action selector="tabBarTouchDownInside:" destination="-1" eventType="touchDragInside" id="Bbb-zk-ZJh"/>
+                                <action selector="tabBarTouchUpOutSide:" destination="-1" eventType="touchDragOutside" id="dtu-pM-hja"/>
+                                <action selector="tabBarTouchUpOutSide:" destination="-1" eventType="touchUpOutside" id="sQB-8K-cKe"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="BYt-MP-riA" firstAttribute="centerX" secondItem="FXh-Xi-6E5" secondAttribute="centerX" id="7kE-t2-41M"/>
+                        <constraint firstItem="XHB-cB-dUN" firstAttribute="centerX" secondItem="FXh-Xi-6E5" secondAttribute="centerX" id="Fts-yU-KEE"/>
+                        <constraint firstItem="Ycr-pF-wfL" firstAttribute="width" secondItem="FXh-Xi-6E5" secondAttribute="width" id="If0-gW-zFc"/>
+                        <constraint firstItem="XHB-cB-dUN" firstAttribute="height" secondItem="FXh-Xi-6E5" secondAttribute="height" id="KoZ-8O-tER"/>
+                        <constraint firstItem="BYt-MP-riA" firstAttribute="top" secondItem="FXh-Xi-6E5" secondAttribute="top" constant="3" id="ate-q7-BRa"/>
+                        <constraint firstItem="XHB-cB-dUN" firstAttribute="centerY" secondItem="FXh-Xi-6E5" secondAttribute="centerY" id="cHv-xF-HaX"/>
+                        <constraint firstItem="XHB-cB-dUN" firstAttribute="width" secondItem="FXh-Xi-6E5" secondAttribute="width" id="kDY-N4-NDe"/>
+                        <constraint firstItem="Ycr-pF-wfL" firstAttribute="centerX" secondItem="FXh-Xi-6E5" secondAttribute="centerX" id="tXu-t7-CQL"/>
+                        <constraint firstItem="Ycr-pF-wfL" firstAttribute="top" secondItem="FXh-Xi-6E5" secondAttribute="top" constant="36" id="xqM-VX-fb0"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UwJ-e0-YNi" userLabel="MyShop View">
+                    <rect key="frame" x="128" y="0.0" width="64" height="50"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_tabbar_my_nor" highlightedImage="icon_tabbar_my_pre" translatesAutoresizingMaskIntoConstraints="NO" id="YEe-hd-A9y">
+                            <rect key="frame" x="15.5" y="3" width="33" height="33"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="33" id="gea-5v-Wdc"/>
+                                <constraint firstAttribute="width" constant="33" id="kvR-o3-EMK"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="마이쇼핑" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CxY-0l-cgL">
+                            <rect key="frame" x="0.0" y="36" width="64" height="12"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="12" id="qNR-yR-Dx7"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEi-bc-HzM">
+                            <rect key="frame" x="0.0" y="0.0" width="64" height="50"/>
+                            <accessibility key="accessibilityConfiguration" hint="로그인이 안되어있다면 로그인 화면이 먼저 노출됩니다" label="마이쇼핑 탭으로 이동">
+                                <accessibilityTraits key="traits" button="YES"/>
+                            </accessibility>
+                            <connections>
+                                <action selector="tabBarAction:" destination="-1" eventType="touchUpInside" id="V2Z-LO-sKh"/>
+                                <action selector="tabBarTouchDownInside:" destination="-1" eventType="touchDown" id="1tY-Eb-atK"/>
+                                <action selector="tabBarTouchDownInside:" destination="-1" eventType="touchDragInside" id="BVu-qH-mOW"/>
+                                <action selector="tabBarTouchUpOutSide:" destination="-1" eventType="touchDragOutside" id="biI-mN-4b1"/>
+                                <action selector="tabBarTouchUpOutSide:" destination="-1" eventType="touchUpOutside" id="y56-MG-6np"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="CxY-0l-cgL" firstAttribute="width" secondItem="UwJ-e0-YNi" secondAttribute="width" id="2lU-DO-fd4"/>
+                        <constraint firstItem="YEe-hd-A9y" firstAttribute="top" secondItem="UwJ-e0-YNi" secondAttribute="top" constant="3" id="3pV-ZW-Alu"/>
+                        <constraint firstItem="lEi-bc-HzM" firstAttribute="height" secondItem="UwJ-e0-YNi" secondAttribute="height" id="8WH-vr-9pB"/>
+                        <constraint firstItem="YEe-hd-A9y" firstAttribute="centerX" secondItem="UwJ-e0-YNi" secondAttribute="centerX" id="BN3-kP-JkF"/>
+                        <constraint firstItem="CxY-0l-cgL" firstAttribute="top" secondItem="UwJ-e0-YNi" secondAttribute="top" constant="36" id="CXN-Uk-pId"/>
+                        <constraint firstItem="lEi-bc-HzM" firstAttribute="width" secondItem="UwJ-e0-YNi" secondAttribute="width" id="HQQ-mD-eH8"/>
+                        <constraint firstItem="CxY-0l-cgL" firstAttribute="centerX" secondItem="UwJ-e0-YNi" secondAttribute="centerX" id="Vx5-c1-ftj"/>
+                        <constraint firstItem="lEi-bc-HzM" firstAttribute="centerX" secondItem="UwJ-e0-YNi" secondAttribute="centerX" id="X1o-aO-dhq"/>
+                        <constraint firstItem="lEi-bc-HzM" firstAttribute="centerY" secondItem="UwJ-e0-YNi" secondAttribute="centerY" id="bpZ-fD-4jI"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UiD-5R-VcI" userLabel="Zzim View">
+                    <rect key="frame" x="192" y="0.0" width="64" height="50"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_tabbar_wish_nor" highlightedImage="icon_tabbar_wish_pre" translatesAutoresizingMaskIntoConstraints="NO" id="ztM-Es-cjZ">
+                            <rect key="frame" x="15.5" y="3" width="33" height="33"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="33" id="k6g-gv-Zs9"/>
+                                <constraint firstAttribute="height" constant="33" id="qY9-ml-xcb"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="찜" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIF-k1-lly">
+                            <rect key="frame" x="0.0" y="36" width="64" height="12"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="12" id="2NH-9q-9w5"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3sk-xQ-1OF">
+                            <rect key="frame" x="0.0" y="0.0" width="64" height="50"/>
+                            <accessibility key="accessibilityConfiguration" hint="로그인이 안되어있다면 로그인 화면이 먼저 노출됩니다" label="찜 탭으로 이동">
+                                <accessibilityTraits key="traits" button="YES"/>
+                            </accessibility>
+                            <connections>
+                                <action selector="tabBarAction:" destination="-1" eventType="touchUpInside" id="dAX-UP-FQF"/>
+                                <action selector="tabBarTouchDownInside:" destination="-1" eventType="touchDown" id="KzD-R4-oHu"/>
+                                <action selector="tabBarTouchDownInside:" destination="-1" eventType="touchDragInside" id="eQ7-52-Rlu"/>
+                                <action selector="tabBarTouchUpOutSide:" destination="-1" eventType="touchUpOutside" id="hCM-6a-IqA"/>
+                                <action selector="tabBarTouchUpOutSide:" destination="-1" eventType="touchDragOutside" id="p2a-at-KTs"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="3sk-xQ-1OF" firstAttribute="width" secondItem="UiD-5R-VcI" secondAttribute="width" id="1LU-GT-f5C"/>
+                        <constraint firstItem="3sk-xQ-1OF" firstAttribute="centerY" secondItem="UiD-5R-VcI" secondAttribute="centerY" id="NBI-eD-XOo"/>
+                        <constraint firstItem="3sk-xQ-1OF" firstAttribute="height" secondItem="UiD-5R-VcI" secondAttribute="height" id="VdM-Ya-ifE"/>
+                        <constraint firstItem="ztM-Es-cjZ" firstAttribute="centerX" secondItem="UiD-5R-VcI" secondAttribute="centerX" id="aiX-N6-3w0"/>
+                        <constraint firstItem="ztM-Es-cjZ" firstAttribute="top" secondItem="UiD-5R-VcI" secondAttribute="top" constant="3" id="chb-rJ-C5B"/>
+                        <constraint firstItem="BIF-k1-lly" firstAttribute="top" secondItem="UiD-5R-VcI" secondAttribute="top" constant="36" id="e4Q-vE-M3z"/>
+                        <constraint firstItem="BIF-k1-lly" firstAttribute="centerX" secondItem="UiD-5R-VcI" secondAttribute="centerX" id="mbN-GY-UOG"/>
+                        <constraint firstItem="3sk-xQ-1OF" firstAttribute="centerX" secondItem="UiD-5R-VcI" secondAttribute="centerX" id="tOf-f9-sb2"/>
+                        <constraint firstItem="BIF-k1-lly" firstAttribute="width" secondItem="UiD-5R-VcI" secondAttribute="width" id="zEO-sV-npc"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Np0-Gr-n3n" userLabel="Recently View">
+                    <rect key="frame" x="256" y="0.0" width="64" height="50"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yaK-sq-ZEf">
+                            <rect key="frame" x="15.5" y="3" width="33" height="33"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_tabbar_history_nor" highlightedImage="icon_tabbar_history_pre" translatesAutoresizingMaskIntoConstraints="NO" id="F6u-fj-5dI">
+                            <rect key="frame" x="15.5" y="3" width="33" height="33"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="33" id="YbT-Ee-gsv"/>
+                                <constraint firstAttribute="height" constant="33" id="mgh-wz-Zee"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근 본 상품" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFl-gy-z3v">
+                            <rect key="frame" x="0.0" y="36" width="64" height="12"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="12" id="r4K-Vv-0Bq"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5o-9H-tdf">
+                            <rect key="frame" x="0.0" y="0.0" width="64" height="50"/>
+                            <accessibility key="accessibilityConfiguration" hint="최근 본 상품 메뉴로 이동합니다" label="최근본상품 탭 이동">
+                                <accessibilityTraits key="traits" button="YES"/>
+                            </accessibility>
+                            <connections>
+                                <action selector="tabBarAction:" destination="-1" eventType="touchUpInside" id="XxK-E2-FjQ"/>
+                                <action selector="tabBarTouchDownInside:" destination="-1" eventType="touchDragInside" id="6Qp-EM-mnl"/>
+                                <action selector="tabBarTouchDownInside:" destination="-1" eventType="touchUpOutside" id="Dme-tD-N4Y"/>
+                                <action selector="tabBarTouchDownInside:" destination="-1" eventType="touchDown" id="nsY-dd-dpl"/>
+                                <action selector="tabBarTouchUpOutSide:" destination="-1" eventType="touchDragOutside" id="hBg-Uh-KfG"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="A5o-9H-tdf" firstAttribute="centerX" secondItem="Np0-Gr-n3n" secondAttribute="centerX" id="9Ju-WX-Syk"/>
+                        <constraint firstItem="yaK-sq-ZEf" firstAttribute="centerX" secondItem="F6u-fj-5dI" secondAttribute="centerX" id="9fA-BS-Jk0"/>
+                        <constraint firstItem="A5o-9H-tdf" firstAttribute="height" secondItem="Np0-Gr-n3n" secondAttribute="height" id="Elr-ME-5Dk"/>
+                        <constraint firstItem="lFl-gy-z3v" firstAttribute="centerX" secondItem="Np0-Gr-n3n" secondAttribute="centerX" id="GZU-PM-ZgC"/>
+                        <constraint firstItem="lFl-gy-z3v" firstAttribute="top" secondItem="Np0-Gr-n3n" secondAttribute="top" constant="36" id="Iu3-6s-He7"/>
+                        <constraint firstItem="A5o-9H-tdf" firstAttribute="width" secondItem="Np0-Gr-n3n" secondAttribute="width" id="J0d-jY-E42"/>
+                        <constraint firstItem="F6u-fj-5dI" firstAttribute="centerX" secondItem="Np0-Gr-n3n" secondAttribute="centerX" id="Mri-W7-B8K"/>
+                        <constraint firstItem="lFl-gy-z3v" firstAttribute="width" secondItem="Np0-Gr-n3n" secondAttribute="width" id="PZq-iR-GG3"/>
+                        <constraint firstItem="F6u-fj-5dI" firstAttribute="top" secondItem="Np0-Gr-n3n" secondAttribute="top" constant="3" id="WNv-lD-f5h"/>
+                        <constraint firstItem="yaK-sq-ZEf" firstAttribute="height" secondItem="F6u-fj-5dI" secondAttribute="height" id="h6I-0E-fpn"/>
+                        <constraint firstItem="A5o-9H-tdf" firstAttribute="centerY" secondItem="Np0-Gr-n3n" secondAttribute="centerY" id="hRe-QJ-WsH"/>
+                        <constraint firstItem="yaK-sq-ZEf" firstAttribute="width" secondItem="F6u-fj-5dI" secondAttribute="width" id="mk4-u4-J51"/>
+                        <constraint firstItem="yaK-sq-ZEf" firstAttribute="centerY" secondItem="F6u-fj-5dI" secondAttribute="centerY" id="ppo-gx-6Lw"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6E-9e-j4S" userLabel="Line View">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                    <color key="backgroundColor" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="PQn-xz-P29"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Np0-Gr-n3n" firstAttribute="width" secondItem="jqa-rO-kEp" secondAttribute="width" multiplier="0.2" id="2KT-sk-bML"/>
+                <constraint firstItem="Pxd-al-Ax4" firstAttribute="height" secondItem="jqa-rO-kEp" secondAttribute="height" id="3mY-y4-wbK"/>
+                <constraint firstItem="UwJ-e0-YNi" firstAttribute="top" secondItem="jqa-rO-kEp" secondAttribute="top" id="57E-PJ-PdB"/>
+                <constraint firstItem="UiD-5R-VcI" firstAttribute="width" secondItem="jqa-rO-kEp" secondAttribute="width" multiplier="0.2" id="5Jq-yh-kXY"/>
+                <constraint firstItem="UwJ-e0-YNi" firstAttribute="leading" secondItem="FXh-Xi-6E5" secondAttribute="trailing" id="6QU-EF-DIR"/>
+                <constraint firstItem="FXh-Xi-6E5" firstAttribute="top" secondItem="jqa-rO-kEp" secondAttribute="top" id="Aus-2K-oXn"/>
+                <constraint firstItem="UiD-5R-VcI" firstAttribute="top" secondItem="jqa-rO-kEp" secondAttribute="top" id="Eae-fr-dmc"/>
+                <constraint firstItem="FXh-Xi-6E5" firstAttribute="width" secondItem="jqa-rO-kEp" secondAttribute="width" multiplier="0.2" id="Fup-n9-3pO"/>
+                <constraint firstItem="Pxd-al-Ax4" firstAttribute="top" secondItem="jqa-rO-kEp" secondAttribute="top" id="GP5-QZ-U43"/>
+                <constraint firstItem="Q6E-9e-j4S" firstAttribute="top" secondItem="jqa-rO-kEp" secondAttribute="top" id="HqK-T3-VNh"/>
+                <constraint firstItem="Q6E-9e-j4S" firstAttribute="leading" secondItem="jqa-rO-kEp" secondAttribute="leading" id="Jxg-sk-Mhr"/>
+                <constraint firstItem="UwJ-e0-YNi" firstAttribute="height" secondItem="jqa-rO-kEp" secondAttribute="height" id="Kvu-w0-O0L"/>
+                <constraint firstAttribute="trailing" secondItem="Np0-Gr-n3n" secondAttribute="trailing" id="LrQ-Ru-BFr"/>
+                <constraint firstItem="FXh-Xi-6E5" firstAttribute="leading" secondItem="Pxd-al-Ax4" secondAttribute="trailing" id="NVj-B3-ly1"/>
+                <constraint firstAttribute="trailing" secondItem="Q6E-9e-j4S" secondAttribute="trailing" id="Nfs-so-bA2"/>
+                <constraint firstItem="Np0-Gr-n3n" firstAttribute="height" secondItem="jqa-rO-kEp" secondAttribute="height" id="ZhG-bp-zww"/>
+                <constraint firstItem="UwJ-e0-YNi" firstAttribute="width" secondItem="jqa-rO-kEp" secondAttribute="width" multiplier="0.2" id="dxn-FJ-268"/>
+                <constraint firstItem="UiD-5R-VcI" firstAttribute="leading" secondItem="UwJ-e0-YNi" secondAttribute="trailing" id="eZ6-Ea-UUY"/>
+                <constraint firstItem="Pxd-al-Ax4" firstAttribute="width" secondItem="jqa-rO-kEp" secondAttribute="width" multiplier="0.2" id="f9k-TQ-zO8"/>
+                <constraint firstItem="UiD-5R-VcI" firstAttribute="height" secondItem="jqa-rO-kEp" secondAttribute="height" id="j5T-Uk-5Xw"/>
+                <constraint firstItem="Np0-Gr-n3n" firstAttribute="top" secondItem="jqa-rO-kEp" secondAttribute="top" id="tIz-k2-qDW"/>
+                <constraint firstItem="FXh-Xi-6E5" firstAttribute="height" secondItem="jqa-rO-kEp" secondAttribute="height" id="uAK-JS-qEk"/>
+                <constraint firstItem="Np0-Gr-n3n" firstAttribute="leading" secondItem="UiD-5R-VcI" secondAttribute="trailing" id="wr8-hq-Ulu"/>
+                <constraint firstItem="Pxd-al-Ax4" firstAttribute="leading" secondItem="jqa-rO-kEp" secondAttribute="leading" id="zzR-mO-IcD"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="615.94202898550725" y="225.66964285714283"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_tabbar_cate_nor" width="33" height="33"/>
+        <image name="icon_tabbar_cate_pre" width="33" height="33"/>
+        <image name="icon_tabbar_history_nor" width="33" height="33"/>
+        <image name="icon_tabbar_history_pre" width="33" height="33"/>
+        <image name="icon_tabbar_home_nor" width="33" height="33"/>
+        <image name="icon_tabbar_home_pre" width="33" height="33"/>
+        <image name="icon_tabbar_my_nor" width="33" height="33"/>
+        <image name="icon_tabbar_my_pre" width="33" height="33"/>
+        <image name="icon_tabbar_wish_nor" width="33" height="33"/>
+        <image name="icon_tabbar_wish_pre" width="33" height="33"/>
+    </resources>
+</document>

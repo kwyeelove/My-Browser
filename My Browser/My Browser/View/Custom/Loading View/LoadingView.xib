@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoadingView" customModule="My_browser" customModuleProvider="target">
+            <connections>
+                <outlet property="indicator" destination="qBx-xm-wzk" id="8oA-tj-ing"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tGL-fi-JuL" userLabel="Bg View">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="qBx-xm-wzk">
+                    <rect key="frame" x="169" y="315" width="37" height="37"/>
+                </activityIndicatorView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="tGL-fi-JuL" secondAttribute="bottom" id="Dgl-ez-t49"/>
+                <constraint firstItem="qBx-xm-wzk" firstAttribute="centerY" secondItem="tGL-fi-JuL" secondAttribute="centerY" id="SlY-W8-p7q"/>
+                <constraint firstAttribute="trailing" secondItem="tGL-fi-JuL" secondAttribute="trailing" id="VDx-ga-EfF"/>
+                <constraint firstItem="tGL-fi-JuL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="eKZ-dc-3XA"/>
+                <constraint firstItem="tGL-fi-JuL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="iMZ-63-zp7"/>
+                <constraint firstItem="qBx-xm-wzk" firstAttribute="centerX" secondItem="tGL-fi-JuL" secondAttribute="centerX" id="vde-NN-DeR"/>
+            </constraints>
+            <point key="canvasLocation" x="140" y="153"/>
+        </view>
+    </objects>
+</document>
