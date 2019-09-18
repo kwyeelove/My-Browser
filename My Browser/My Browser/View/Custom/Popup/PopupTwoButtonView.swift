@@ -1,9 +1,9 @@
 //
 //  PopupTwoButtonView.swift
-//  GSSHOP
+//  My Browser
 //
 //  Created by Kiwon on 19/06/2019.
-//  Copyright © 2019 GS홈쇼핑. All rights reserved.
+//  Copyright © 2019 Sidory. All rights reserved.
 //
 
 import UIKit
@@ -69,7 +69,7 @@ class PopupTwoButtonView: PopupBaseView {
     }
     
     private func setInitUI() {
-        let view = Bundle.main.loadNibNamed("PopupTwoButtonView", owner: self, options: nil)?.first as! UIView
+        let view = Bundle.main.loadNibNamed(PopupTwoButtonView.reusableIdentifier, owner: self, options: nil)?.first as! UIView
         view.backgroundColor = .clear
         view.frame = self.bounds
         self.addSubview(view)

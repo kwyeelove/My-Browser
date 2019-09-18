@@ -1,9 +1,9 @@
 //
 //  FileUtil.swift
-//  GSSHOP
+//  My Browser
 //
 //  Created by Kiwon on 16/05/2019.
-//  Copyright © 2019 GS홈쇼핑. All rights reserved.
+//  Copyright © 2019 Sidory. All rights reserved.
 //
 
 import UIKit

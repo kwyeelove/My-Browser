@@ -1,9 +1,9 @@
 //
 //  Constants.swift
-//  GS SHOP
+//  My Browser
 //
 //  Created by Kiwon on 27/08/2019.
-//  Copyright © 2019 GS홈쇼핑. All rights reserved.
+//  Copyright © 2019 Sidory. All rights reserved.
 //
 import Foundation
 

@@ -22,8 +22,7 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var tabbarCollectionView: UICollectionView!
     /// 하단 영역 뷰 (페이지 뷰)
     @IBOutlet weak var pageView: UIView!
-    /// Tabbar 추가하기 버튼
-    @IBOutlet weak var addTabbarBtn: UIButton!
+    
     /// 하단 Tab Bar 뷰
     var tabBar: MainTabBar!
     
@@ -69,8 +68,9 @@ class MainViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        self.present(self.searchController, animated: true, completion: nil)
+        if self.tabItems.count <= 0 {
+            self.present(self.searchController, animated: true, completion: nil)
+        }
     }
 }
 
@@ -97,7 +97,7 @@ extension MainViewController {
         initPageControll()
         
         // 하단 TabBar 설정
-//        initTabBar()
+        initTabBar()
     }
     
     /// SearchBar 설정
@@ -110,7 +110,7 @@ extension MainViewController {
         self.searchController.searchBar.returnKeyType = .go
         self.searchController.searchBar.keyboardType = .URL
         
-        self.navigationItem.searchController = self.searchController
+        self.navigationController?.navigationItem.searchController = self.searchController
         definesPresentationContext = true
     }
     
@@ -209,6 +209,7 @@ extension MainViewController {
     /// 하단 텝바
     private func initTabBar() {
         self.tabBar = MainTabBar(frame: .zero)
+        self.tabBar.delegate = self
         self.view.addSubview(self.tabBar)
     }
     
@@ -389,5 +390,52 @@ extension MainViewController: UISearchResultsUpdating {
 }
 
 extension MainViewController: UISearchControllerDelegate {
+    
+}
+
+// MARK:- MainTabBarDelegate
+extension MainViewController: MainTabBarDelegate {
+    func backBtnAction() {
+        if let vc = self.viewControllers[safe: self.currentIndex] as? WKWebViewController,
+            vc.wkWebView.canGoBack {
+            vc.wkWebView.goBack()
+        }
+    }
+    
+    func forwardBtnAction() {
+        if let vc = self.viewControllers[safe: self.currentIndex] as? WKWebViewController,
+            vc.wkWebView.canGoForward {
+            vc.wkWebView.goForward()
+        }
+    }
+    
+    func refreshBtnAction() {
+        if let vc = self.viewControllers[safe: self.currentIndex] as? WKWebViewController {
+            vc.wkWebView.reload()
+        }
+        
+    }
+    
+    func urlBtnAction() {
+        if self.searchController.isActive, !self.searchController.hidesNavigationBarDuringPresentation {
+            self.searchController.hidesNavigationBarDuringPresentation = false
+        }
+    }
+    
+    func tabBtnAction() {
+        let entity = NSEntityDescription.entity(forEntityName: Const.CoreData.Tab.entity.name, in: self.context)!
+        let tab = NSManagedObject(entity: entity, insertInto: self.context)
+        
+        tab.setValue("네이버", forKeyPath: Const.CoreData.Tab.name.name)
+        tab.setValue("http://www.naver.com", forKeyPath: Const.CoreData.Tab.url.name)
+        
+        do {
+            try self.context.save()
+            self.addTabItem(tab)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
     
 }

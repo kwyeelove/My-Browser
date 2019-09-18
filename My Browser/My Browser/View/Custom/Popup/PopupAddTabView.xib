@@ -8,14 +8,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopupAddTabView" customModule="My_browser" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopupAddTabView" customModule="My_Browser" customModuleProvider="target">
             <connections>
                 <outlet property="bgView" destination="FbR-iU-IyV" id="g1k-2Y-bRF"/>
                 <outlet property="btnLeft" destination="Ydw-Vu-oBE" id="ANf-aW-UJm"/>
                 <outlet property="btnRight" destination="gkl-9P-iu3" id="t4P-MN-DWr"/>
                 <outlet property="msgLbl" destination="0db-Cc-Te7" id="faV-5v-URh"/>
                 <outlet property="popupView" destination="jcd-Fp-OOY" id="M0V-7F-TYs"/>
-                <outlet property="titleLbBot" destination="I53-KK-vzw" id="SeX-ad-8f4"/>
+                <outlet property="titleLbTop" destination="GNe-Hw-pO1" id="P2O-q2-8Nf"/>
                 <outlet property="titleLbl" destination="h5P-ac-XqM" id="bI4-I9-ZCS"/>
                 <outlet property="titleLblHeight" destination="mFQ-lw-dgh" id="ZZe-pQ-kuM"/>
             </connections>

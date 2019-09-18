@@ -10,6 +10,7 @@
 		8497EE872331EF0700909FE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F6C47F2331D09200BC5317 /* Main.storyboard */; };
 		8497EE892331EF3200909FE4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8497EE882331EF3200909FE4 /* Launch Screen.storyboard */; };
 		8497EE8B2331F43C00909FE4 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497EE8A2331F43C00909FE4 /* BaseNavigationController.swift */; };
+		8497EE9023321E8C00909FE4 /* TabEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497EE8F23321E8C00909FE4 /* TabEditTableViewController.swift */; };
 		84F6C4622331D01300BC5317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6C4612331D01300BC5317 /* AppDelegate.swift */; };
 		84F6C4642331D01300BC5317 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6C4632331D01300BC5317 /* SceneDelegate.swift */; };
 		84F6C46C2331D01300BC5317 /* My_Browser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84F6C46A2331D01300BC5317 /* My_Browser.xcdatamodeld */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		8497EE882331EF3200909FE4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		8497EE8A2331F43C00909FE4 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		8497EE8F23321E8C00909FE4 /* TabEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabEditTableViewController.swift; sourceTree = "<group>"; };
 		84F6C45E2331D01300BC5317 /* My Browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F6C4612331D01300BC5317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F6C4632331D01300BC5317 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8497EE8C23321E2400909FE4 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				84F6C4792331D09200BC5317 /* BaseViewController.swift */,
+				8497EE8A2331F43C00909FE4 /* BaseNavigationController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		8497EE8D23321E5A00909FE4 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				84F6C47A2331D09200BC5317 /* TabCell.xib */,
+				84F6C47B2331D09200BC5317 /* TabCell.swift */,
+				84F6C47C2331D09200BC5317 /* MainViewController.swift */,
+				84F6C47D2331D09200BC5317 /* WKWebViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		8497EE8E23321E6800909FE4 /* Tab Edit */ = {
+			isa = PBXGroup;
+			children = (
+				8497EE8F23321E8C00909FE4 /* TabEditTableViewController.swift */,
+			);
+			path = "Tab Edit";
+			sourceTree = "<group>";
+		};
 		84F6C4552331D01300BC5317 = {
 			isa = PBXGroup;
 			children = (
@@ -125,12 +155,9 @@
 		84F6C4782331D09200BC5317 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				84F6C4792331D09200BC5317 /* BaseViewController.swift */,
-				8497EE8A2331F43C00909FE4 /* BaseNavigationController.swift */,
-				84F6C47A2331D09200BC5317 /* TabCell.xib */,
-				84F6C47B2331D09200BC5317 /* TabCell.swift */,
-				84F6C47C2331D09200BC5317 /* MainViewController.swift */,
-				84F6C47D2331D09200BC5317 /* WKWebViewController.swift */,
+				8497EE8E23321E6800909FE4 /* Tab Edit */,
+				8497EE8C23321E2400909FE4 /* Base */,
+				8497EE8D23321E5A00909FE4 /* Main */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -158,16 +185,16 @@
 		84F6C4812331D09200BC5317 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
-				84F6C4822331D09200BC5317 /* PopupAddTabView.xib */,
 				84F6C4832331D09200BC5317 /* PopupBaseView.swift */,
-				84F6C4842331D09200BC5317 /* PopupImageView.xib */,
-				84F6C4852331D09200BC5317 /* PopupOneButtonView.xib */,
-				84F6C4862331D09200BC5317 /* PopupAddTabView.swift */,
 				84F6C4872331D09200BC5317 /* PopupManager.swift */,
-				84F6C4882331D09200BC5317 /* PopupTwoButtonView.swift */,
-				84F6C4892331D09200BC5317 /* PopupOneButtonView.swift */,
+				84F6C4822331D09200BC5317 /* PopupAddTabView.xib */,
+				84F6C4862331D09200BC5317 /* PopupAddTabView.swift */,
+				84F6C4842331D09200BC5317 /* PopupImageView.xib */,
 				84F6C48A2331D09200BC5317 /* PopupImageView.swift */,
+				84F6C4852331D09200BC5317 /* PopupOneButtonView.xib */,
+				84F6C4892331D09200BC5317 /* PopupOneButtonView.swift */,
 				84F6C48B2331D09200BC5317 /* PopupTwoButtonView.xib */,
+				84F6C4882331D09200BC5317 /* PopupTwoButtonView.swift */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -317,6 +344,7 @@
 				84F6C4622331D01300BC5317 /* AppDelegate.swift in Sources */,
 				84F6C4642331D01300BC5317 /* SceneDelegate.swift in Sources */,
 				84F6C4B42331D09200BC5317 /* Constants.swift in Sources */,
+				8497EE9023321E8C00909FE4 /* TabEditTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

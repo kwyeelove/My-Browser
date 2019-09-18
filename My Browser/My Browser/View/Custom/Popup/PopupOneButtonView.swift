@@ -1,9 +1,9 @@
 //
 //  PopupOneButtonView.swift
-//  GSSHOP
+//  My Browser
 //
 //  Created by Kiwon on 17/06/2019.
-//  Copyright © 2019 GS홈쇼핑. All rights reserved.
+//  Copyright © 2019 Sidory. All rights reserved.
 //
 
 import UIKit
@@ -31,10 +31,6 @@ class PopupOneButtonView: PopupBaseView {
                 self.titleLblHeight.constant = self.titleLbl.intrinsicContentSize.height
                 self.titleLbl.isHidden = false
                 self.titleLblTop.constant = TITLE_LABEL_BOT_MARGIN
-                // 하단 라인 그리기
-                let startPoint = CGPoint(x: 0, y: self.titleLbl.frame.origin.y + self.titleLbl.frame.height + TITLE_LABEL_BOT_MARGIN)
-                let endPoint = CGPoint(x: self.popupView.frame.width, y: self.titleLbl.frame.origin.y + self.titleLbl.frame.height + TITLE_LABEL_BOT_MARGIN)
-                self.drawLine(inView: self.popupView, start: startPoint, end: endPoint, color: UIColor.getColor("1CADBB"))
             }
         }
     }
@@ -59,7 +55,7 @@ class PopupOneButtonView: PopupBaseView {
     }
     
     private func setInitUI() {
-        let view = Bundle.main.loadNibNamed("PopupOneButtonView",  owner: self, options: nil)?.first as! UIView
+        let view = Bundle.main.loadNibNamed(PopupOneButtonView.reusableIdentifier,  owner: self, options: nil)?.first as! UIView
         view.backgroundColor = .clear
         view.frame = self.bounds
         self.addSubview(view)

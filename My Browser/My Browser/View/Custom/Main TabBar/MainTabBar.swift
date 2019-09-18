@@ -1,29 +1,38 @@
 //
 //  MainTabBar.swift
-//  GS SHOP
+//  My Browser
 //
 //  Created by Kiwon on 03/09/2019.
-//  Copyright © 2019 GS홈쇼핑. All rights reserved.
+//  Copyright © 2019 Sidory. All rights reserved.
 //
 
 import UIKit
 
+protocol MainTabBarDelegate {
+    func backBtnAction()
+    func forwardBtnAction()
+    func refreshBtnAction()
+    func urlBtnAction()
+    func tabBtnAction()
+}
+
 class MainTabBar: UIView {
     
-    let HEIGHT: CGFloat = 50.0
+    let HEIGHT: CGFloat = 44.0
     
-    @IBOutlet weak var homeLbl: UILabel!
-    @IBOutlet weak var cateLbl: UILabel!
-    @IBOutlet weak var myShopLbl: UILabel!
-    @IBOutlet weak var wishLbl: UILabel!
-    @IBOutlet weak var historyLbl: UILabel!
+    @IBOutlet weak var backBtn: UIButton!
     
-    @IBOutlet var tabBarImageViews: [UIImageView]!
-    @IBOutlet var tabBarButtons: [UIButton]!
+    @IBOutlet weak var frontBtn: UIButton!
     
-    @IBOutlet weak var recentlyImgView: UIImageView!
+    @IBOutlet weak var refreshBtn: UIButton!
+    
+    @IBOutlet weak var urlBtn: UIButton!
+    
+    @IBOutlet weak var tabBtn: UIButton!
     
     private var originFrame: CGRect = .zero
+    
+    var delegate: MainTabBarDelegate?
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -66,38 +75,25 @@ class MainTabBar: UIView {
             self.showTabBar()
         }
     }
+    
 }
 
 // MARK:- Button Action
 extension MainTabBar {
     
-    @IBAction func tabBarTouchDownInside(_ sender: UIButton) {
-        for (index, button) in self.tabBarButtons.enumerated() {
-            if button.isEqual(sender) {
-                self.tabBarImageViews[index].isHighlighted = true
-                break
-            }
-        }
+    @IBAction func backBtnAction(_ sender: UIButton) {
+        self.delegate?.backBtnAction()
     }
-    
-    @IBAction func tabBarTouchUpOutSide(_ sender: UIButton) {
-        for (index, button) in self.tabBarButtons.enumerated() {
-            if button.isEqual(sender) {
-                self.tabBarImageViews[index].isHighlighted = false
-                break
-            }
-        }
+    @IBAction func frontBtnAction(_ sender: UIButton) {
+        self.delegate?.forwardBtnAction()
     }
-    
-    @IBAction func tabBarAction(_ sender: UIButton) {
-        for (index, button) in self.tabBarButtons.enumerated() {
-            if button.isEqual(sender) {
-                self.tabBarImageViews[index].isHighlighted = false
-                break
-            }
-        }
-        
-        
-            self.hideTabBar()
+    @IBAction func refreshBtnAction(_ sender: UIButton) {
+        self.delegate?.refreshBtnAction()
+    }
+    @IBAction func urlBtnAction(_ sender: UIButton) {
+        self.delegate?.urlBtnAction()
+    }
+    @IBAction func tabBtnAction(_ sender: UIButton) {
+        self.delegate?.tabBtnAction()
     }
 }
