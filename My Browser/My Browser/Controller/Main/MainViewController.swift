@@ -10,8 +10,6 @@ import UIKit
 import CoreData
 
 class MainViewController: BaseViewController {
-    /// 코어데이터 사용 Context
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     /// Tabbar Title의 양쪽 여백 (좌우 여백의 합 값)
     let SECTION_TITLE_MARGIN: CGFloat = 10 * 2
@@ -44,7 +42,7 @@ class MainViewController: BaseViewController {
     private lazy var viewControllers: [UIViewController] = {
         var detailViewControllers = [UIViewController]()
         for item in self.tabItems {
-            if let vc = UIStoryboard.init(name: Const.StoryBoard.main.name, bundle: nil).instantiateViewController(withIdentifier: WKWebViewController.reusableIdentifier) as? WKWebViewController {
+            if let vc = UIStoryboard.init(name: Const.StoryBoard.Main.name, bundle: nil).instantiateViewController(withIdentifier: WKWebViewController.reusableIdentifier) as? WKWebViewController {
                 vc.url = item.value(forKey: Const.CoreData.Tab.url.name) as? String ?? ""
                 vc.name = item.value(forKey: Const.CoreData.Tab.name.name) as? String ?? ""
                 detailViewControllers.append(vc)
@@ -68,9 +66,10 @@ class MainViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if self.tabItems.count <= 0 {
+        if self.searchController.hidesNavigationBarDuringPresentation {
             self.present(self.searchController, animated: true, completion: nil)
         }
+        self.navigationController?.isNavigationBarHidden = true
     }
 }
 
@@ -79,7 +78,10 @@ extension MainViewController {
     /// UI 초기화
     private func setUI() {
         // 저장된 tab 데이터 가져오기
-        loadCoreData()
+        if let datas = CoreDataManager.loadAllCoreData(entity: Const.CoreData.Tab.entity.name) {
+            self.tabItems = datas
+            self.setMenuBarViewWidth()
+        }
         
         // SearchBar setup
         setupSearchBar()
@@ -213,24 +215,11 @@ extension MainViewController {
         self.view.addSubview(self.tabBar)
     }
     
-    /// CoreData Load
-    private func loadCoreData() {
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Const.CoreData.Tab.entity.name)
-         
-         //3
-         do {
-            self.tabItems = try self.context.fetch(fetchRequest)
-            self.setMenuBarViewWidth()
-         } catch let error as NSError {
-           print("Could not fetch. \(error), \(error.userInfo)")
-         }
-    }
-    
     /// Tab 추가
     private func addTabItem( _ item: NSManagedObject) {
         self.showLoading()
         self.tabItems.append(item)
-        if let vc = UIStoryboard.init(name: Const.StoryBoard.main.name, bundle: nil).instantiateViewController(withIdentifier: WKWebViewController.reusableIdentifier) as? WKWebViewController {
+        if let vc = UIStoryboard.init(name: Const.StoryBoard.Main.name, bundle: nil).instantiateViewController(withIdentifier: WKWebViewController.reusableIdentifier) as? WKWebViewController {
             vc.url = item.value(forKey: Const.CoreData.Tab.url.name) as? String ?? ""
             vc.name = item.value(forKey: Const.CoreData.Tab.name.name) as? String ?? ""
             self.viewControllers.append(vc)
@@ -249,11 +238,6 @@ extension MainViewController {
                 self.stopLoading()
             }
         }
-        
-    }
-    
-    /// Tab 삭제
-    private func removeTabItem( _ item: NSManagedObject) {
         
     }
 }
@@ -423,17 +407,8 @@ extension MainViewController: MainTabBarDelegate {
     }
     
     func tabBtnAction() {
-        let entity = NSEntityDescription.entity(forEntityName: Const.CoreData.Tab.entity.name, in: self.context)!
-        let tab = NSManagedObject(entity: entity, insertInto: self.context)
-        
-        tab.setValue("네이버", forKeyPath: Const.CoreData.Tab.name.name)
-        tab.setValue("http://www.naver.com", forKeyPath: Const.CoreData.Tab.url.name)
-        
-        do {
-            try self.context.save()
-            self.addTabItem(tab)
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
+        if let tabEditVC = UIStoryboard(name: Const.StoryBoard.Main.name, bundle: nil).instantiateViewController(withIdentifier: TabEditTableViewController.reusableIdentifier) as? TabEditTableViewController {
+            self.navigationController?.pushViewController(tabEditVC, animated: true)
         }
     }
     

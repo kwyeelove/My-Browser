@@ -14,7 +14,7 @@ class BaseNavigationController: UINavigationController {
         super.viewDidLoad()
         
         /// 네비게이션 투명하게
-        setBackgroundClear()
+//        setBackgroundClear()
         self.navigationItem.setHidesBackButton(true, animated: false)
         self.interactivePopGestureRecognizer?.isEnabled = true
         self.interactivePopGestureRecognizer?.delegate = nil
@@ -51,6 +51,12 @@ class BaseNavigationController: UINavigationController {
 }
 
 extension BaseNavigationController {
+    func setNavigationBackButton(title: String) {
+        let item = UIBarButtonItem(title: title, style: .plain, target: nil, action: nil)
+        item.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0)], for: .normal)
+        self.navigationItem.backBarButtonItem = item
+    }
+    
     func pushViewController(viewController: UIViewController, animated: Bool, completion: @escaping (() ->     Void)) {
         pushViewController(viewController, animated: animated)
         doAfterAnimatingTransition(animated: animated, completion: completion)

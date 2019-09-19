@@ -14,7 +14,7 @@ extension Const {
     enum Text: String { case
         comfirm = "common_txt_confirm",
         close = "common_txt_close",
-
+        back = "common_txt_back",
         search_bar_placeholder = "searchbar_placeholder"
         
         var localized: String { return self.rawValue.localizaed }
@@ -24,7 +24,7 @@ extension Const {
 // MARK:- StoryBoard Constatns
 extension Const {
     enum StoryBoard: String { case
-        main = "Main"
+        Main = "Main"
         var name: String { return self.rawValue }
     }
 }

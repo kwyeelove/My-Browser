@@ -9,6 +9,8 @@
 import UIKit
 
 class BaseViewController: UIViewController {
+    /// 코어데이터 사용 Context
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     // 로딩화면
     var loadingView: LoadingView!
     
@@ -21,7 +23,7 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.setNavigationBackButton(title: "")
         self.loadingView = LoadingView.init(frame: self.view.frame)
     }
 }
@@ -51,4 +53,6 @@ extension BaseViewController {
         }
     }
 }
+
+
 

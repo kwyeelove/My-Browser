@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  My Browser
+
+  Created by Kiwon on 19/09/2019.
+  Copyright © 2019 Sidory. All rights reserved.
+*/
+"common_txt_confirm" = "Confirm";
+"common_txt_close" = "Close";
+"common_txt_back" = "Back";
+
+
+"searchbar_placeholder" = "";
