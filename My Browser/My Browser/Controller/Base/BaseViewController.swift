@@ -52,6 +52,14 @@ extension BaseViewController {
             self.loadingView.removeFromSuperview()
         }
     }
+    
+    func showAdView() {
+        
+    }
+    
+    func hideAdView() {
+        
+    }
 }
 
 

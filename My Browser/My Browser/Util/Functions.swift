@@ -10,8 +10,9 @@ import UIKit
 
 /// 단말의 Safe Area Inset값을 가져온다.
 public func getSafeAreaInsets() -> UIEdgeInsets {
-    if isiPhoneXseries() {
-        return (UIApplication.shared.keyWindow?.safeAreaInsets)!
+    if isiPhoneXseries() ,
+        let window = UIApplication.shared.windows.first {
+        return window.safeAreaInsets
     }
     return .zero
 }
@@ -75,4 +76,20 @@ public func isiPhoneXseries() -> Bool{
         return true
     }
     return false
+}
+
+public func log(_ message: String..., separator: String = "") {
+    #if DEBUG
+    if separator.isEmpty {
+        Swift.print(message)
+    } else {
+        Swift.print(message, separator: separator)
+    }
+    #endif
+}
+
+public func logDebug(_ items: Any...) {
+    #if DEBUG
+    Swift.debugPrint(items)
+    #endif
 }

@@ -24,6 +24,11 @@ class TabEditTableViewController: UITableViewController {
         super.viewDidAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

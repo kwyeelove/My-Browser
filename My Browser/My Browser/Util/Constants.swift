@@ -21,6 +21,16 @@ extension Const {
     }
 }
 
+// MARK:- Color
+extension Const {
+    enum Color: String { case
+        Base_nor = "#1ABC9C",
+        Base_pre = "#349880"
+        
+        var value: String { return self.rawValue }
+    }
+}
+
 // MARK:- StoryBoard Constatns
 extension Const {
     enum StoryBoard: String { case
@@ -47,6 +57,19 @@ extension Const {
             url = "url"
             var name: String { return self.rawValue }
         }
+    }
+}
+
+// MARK:- Google AdMod
+extension Const {
+    enum Google: String { case
+        App = "ca-app-pub-9953759635938214~8090198693",
+        MainBanner = "ca-app-pub-9953759635938214/4970045488",
+        MainBanner_DEBUG = "ca-app-pub-3940256099942544/2934735716",
+        Popup = "ca-app-pub-9953759635938214/8526981269",
+        Popup_DEBUG = "ca-app-pub-3940256099942544/4411468910"
+        
+        var ID: String { return self.rawValue }
     }
 }
 

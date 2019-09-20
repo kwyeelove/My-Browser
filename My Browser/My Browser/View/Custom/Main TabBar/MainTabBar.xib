@@ -18,11 +18,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="jqa-rO-kEp">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="pbf-Nc-haz">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <rect key="frame" x="10" y="0.0" width="355" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jQ-h4-8UM">
                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
@@ -32,48 +32,62 @@
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="4jQ-h4-8UM" secondAttribute="height" multiplier="1:1" id="1FD-HE-iCd"/>
                             </constraints>
+                            <state key="normal" image="ico_left_arrow_nor"/>
+                            <state key="highlighted" image="ico_left_arrow_pre"/>
                             <connections>
                                 <action selector="backBtnAction:" destination="-1" eventType="touchUpInside" id="lmt-o9-b4Q"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XHB-cB-dUN">
-                            <rect key="frame" x="69" y="0.0" width="44" height="44"/>
+                            <rect key="frame" x="78" y="0.0" width="44" height="44"/>
                             <accessibility key="accessibilityConfiguration" hint="카테고리 메뉴가 왼쪽에서 열립니다" label="카테고리 탭으로 이동">
                                 <accessibilityTraits key="traits" button="YES"/>
                             </accessibility>
+                            <state key="normal" image="ico_right_arrow_nor"/>
+                            <state key="highlighted" image="ico_right_arrow_pre"/>
                             <connections>
                                 <action selector="frontBtnAction:" destination="-1" eventType="touchUpInside" id="VqA-91-dTK"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3sk-xQ-1OF">
-                            <rect key="frame" x="138" y="0.0" width="44" height="44"/>
+                            <rect key="frame" x="155.5" y="0.0" width="44" height="44"/>
                             <accessibility key="accessibilityConfiguration" hint="로그인이 안되어있다면 로그인 화면이 먼저 노출됩니다" label="찜 탭으로 이동">
                                 <accessibilityTraits key="traits" button="YES"/>
                             </accessibility>
+                            <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                            <state key="normal" image="ico_refresh_nor"/>
+                            <state key="highlighted" image="ico_refresh_pre"/>
                             <connections>
                                 <action selector="refreshBtnAction:" destination="-1" eventType="touchUpInside" id="iWW-s2-kyi"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEi-bc-HzM">
-                            <rect key="frame" x="207" y="0.0" width="44" height="44"/>
+                            <rect key="frame" x="233.5" y="0.0" width="44" height="44"/>
                             <accessibility key="accessibilityConfiguration" hint="로그인이 안되어있다면 로그인 화면이 먼저 노출됩니다" label="마이쇼핑 탭으로 이동">
                                 <accessibilityTraits key="traits" button="YES"/>
                             </accessibility>
+                            <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                            <state key="normal" image="ico_website_nor"/>
+                            <state key="highlighted" image="ico_website_pre"/>
                             <connections>
                                 <action selector="urlBtnAction:" destination="-1" eventType="touchUpInside" id="Pp7-kZ-dAe"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5o-9H-tdf">
-                            <rect key="frame" x="276" y="0.0" width="44" height="44"/>
+                            <rect key="frame" x="311" y="0.0" width="44" height="44"/>
                             <accessibility key="accessibilityConfiguration" hint="최근 본 상품 메뉴로 이동합니다" label="최근본상품 탭 이동">
                                 <accessibilityTraits key="traits" button="YES"/>
                             </accessibility>
+                            <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                            <state key="normal" image="ico_tab_edit_nor"/>
+                            <state key="highlighted" image="ico_tab_edit_pre"/>
                             <connections>
                                 <action selector="tabBtnAction:" destination="-1" eventType="touchUpInside" id="QVh-SN-RC1"/>
                             </connections>
                         </button>
                     </subviews>
                     <constraints>
+                        <constraint firstAttribute="height" constant="44" id="DI5-gG-oUs"/>
                         <constraint firstItem="XHB-cB-dUN" firstAttribute="width" secondItem="4jQ-h4-8UM" secondAttribute="width" id="Hab-XX-yLu"/>
                         <constraint firstItem="A5o-9H-tdf" firstAttribute="width" secondItem="4jQ-h4-8UM" secondAttribute="width" id="JAn-qI-G84"/>
                         <constraint firstItem="3sk-xQ-1OF" firstAttribute="width" secondItem="4jQ-h4-8UM" secondAttribute="width" id="L8G-xq-rpg"/>
@@ -85,7 +99,7 @@
                     </constraints>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6E-9e-j4S" userLabel="Line View">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                     <color key="backgroundColor" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="PQn-xz-P29"/>
@@ -95,12 +109,11 @@
             <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="pbf-Nc-haz" firstAttribute="top" secondItem="jqa-rO-kEp" secondAttribute="top" id="BDz-qb-nfh"/>
-                <constraint firstItem="pbf-Nc-haz" firstAttribute="leading" secondItem="jqa-rO-kEp" secondAttribute="leading" id="Ggg-Z2-Pgd"/>
+                <constraint firstItem="pbf-Nc-haz" firstAttribute="leading" secondItem="jqa-rO-kEp" secondAttribute="leading" constant="10" id="Ggg-Z2-Pgd"/>
                 <constraint firstItem="Q6E-9e-j4S" firstAttribute="top" secondItem="jqa-rO-kEp" secondAttribute="top" id="HqK-T3-VNh"/>
                 <constraint firstItem="Q6E-9e-j4S" firstAttribute="leading" secondItem="jqa-rO-kEp" secondAttribute="leading" id="Jxg-sk-Mhr"/>
                 <constraint firstAttribute="trailing" secondItem="Q6E-9e-j4S" secondAttribute="trailing" id="Nfs-so-bA2"/>
-                <constraint firstAttribute="trailing" secondItem="pbf-Nc-haz" secondAttribute="trailing" id="nN9-RG-Ch4"/>
-                <constraint firstAttribute="bottom" secondItem="pbf-Nc-haz" secondAttribute="bottom" id="xta-If-HX9"/>
+                <constraint firstAttribute="trailing" secondItem="pbf-Nc-haz" secondAttribute="trailing" constant="10" id="nN9-RG-Ch4"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
@@ -108,4 +121,16 @@
             <point key="canvasLocation" x="615.94202898550725" y="225.66964285714283"/>
         </view>
     </objects>
+    <resources>
+        <image name="ico_left_arrow_nor" width="33" height="33"/>
+        <image name="ico_left_arrow_pre" width="33" height="33"/>
+        <image name="ico_refresh_nor" width="33" height="33"/>
+        <image name="ico_refresh_pre" width="33" height="33"/>
+        <image name="ico_right_arrow_nor" width="33" height="33"/>
+        <image name="ico_right_arrow_pre" width="33" height="33"/>
+        <image name="ico_tab_edit_nor" width="33" height="33"/>
+        <image name="ico_tab_edit_pre" width="33" height="33"/>
+        <image name="ico_website_nor" width="33" height="33"/>
+        <image name="ico_website_pre" width="33" height="33"/>
+    </resources>
 </document>

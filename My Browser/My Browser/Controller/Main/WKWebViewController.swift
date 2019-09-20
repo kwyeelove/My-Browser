@@ -11,7 +11,7 @@ import WebKit
 
 class WKWebViewController: BaseViewController {
 
-    @IBOutlet var wkWebView: WKWebView!
+    @IBOutlet var wkWebView: MyWKWebView!
     
     var url: String = ""
     var name: String = ""
@@ -27,16 +27,22 @@ class WKWebViewController: BaseViewController {
             self.wkWebView.load(request)
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+extension WKWebViewController: WKUIDelegate {
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        guard let url = navigationAction.request.url else {
+            return nil
+        }
+        // target = _blank tag 호출시
+        guard let targetFrame = navigationAction.targetFrame, targetFrame.isMainFrame  else  {
+            self.wkWebView.openApp(withScheme: url.absoluteString, moreString: nil)
+            return nil
+        }
+        return nil
+    }
+}
+
+//extension WKWebViewController: WKNavigationDelegate {
+//
+//}

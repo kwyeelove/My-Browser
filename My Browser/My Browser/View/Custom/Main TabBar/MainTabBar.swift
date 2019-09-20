@@ -18,7 +18,7 @@ protocol MainTabBarDelegate {
 
 class MainTabBar: UIView {
     
-    let HEIGHT: CGFloat = 44.0
+    let HEIGHT: CGFloat = 50.0
     
     @IBOutlet weak var backBtn: UIButton!
     
@@ -60,20 +60,18 @@ class MainTabBar: UIView {
     }
     
     func showTabBar() {
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.2) {
             self.frame = self.originFrame
         }
     }
     
     func hideTabBar() {
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             self.frame = CGRect(x: self.originFrame.origin.x,
                                 y: getAppFullHeight(),
                                 width: self.originFrame.width,
                                 height: self.originFrame.height)
-        }) { (isFinished) in
-            self.showTabBar()
-        }
+        })
     }
     
 }

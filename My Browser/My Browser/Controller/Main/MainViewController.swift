@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import GoogleMobileAds
 
 class MainViewController: BaseViewController {
     
@@ -20,9 +21,16 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var tabbarCollectionView: UICollectionView!
     /// 하단 영역 뷰 (페이지 뷰)
     @IBOutlet weak var pageView: UIView!
+    /// 하단 AD 뷰
+    @IBOutlet weak var adView: GADBannerView!
+    
+    @IBOutlet weak var adViewHeight: NSLayoutConstraint!
     
     /// 하단 Tab Bar 뷰
     var tabBar: MainTabBar!
+    
+    /// 하단 광고뷰
+    private var bannerView: GADBannerView!
     
     /// 매장 메뉴바의 하단 Line뷰
     private var lineView: UIView = {
@@ -59,17 +67,22 @@ class MainViewController: BaseViewController {
     /// Search
     let searchController = UISearchController(searchResultsController: nil)
 
+    /// 구글 전면 광고
+    var interstitial: GADInterstitial!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let searchBar = UISearchBar()
+        searchBar.showsCancelButton = true
+        searchBar.placeholder = "검색 또는 URL"
+        searchBar.delegate = self
+        
+        self.navigationController?.navigationItem.titleView = searchBar
         setUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if self.searchController.hidesNavigationBarDuringPresentation {
-            self.present(self.searchController, animated: true, completion: nil)
-        }
-        self.navigationController?.isNavigationBarHidden = true
     }
 }
 
@@ -84,7 +97,7 @@ extension MainViewController {
         }
         
         // SearchBar setup
-        setupSearchBar()
+//        setupSearchBar()
         
         // 상단 CollectionView 설정
         setupCollectionView()
@@ -100,6 +113,71 @@ extension MainViewController {
         
         // 하단 TabBar 설정
         initTabBar()
+        
+        // 하단 광고뷰 초기화
+        initAdView()
+        
+        // 전면광고 초기화
+        initInterstitial()
+    }
+    /// 전면광고 초기화
+    private func initInterstitial() {
+        // 구글 광고
+        #if DEBUG
+        let adUnitID = Const.Google.Popup_DEBUG.ID
+        #else
+        let adUnitID = Const.Google.Popup.ID
+        #endif
+        self.interstitial = GADInterstitial(adUnitID: adUnitID)
+        
+        let request = GADRequest()
+        #if DEBUG
+        request.testDevices = [ "2c4bfb4fb853b3d9b03c68578176d3a7" ]
+        #endif
+        interstitial.load(request)
+        interstitial.delegate = self
+    }
+    
+    /// 광고뷰 초기화
+    private func initAdView() {
+        self.adView.backgroundColor = .white
+        self.adViewHeight.constant = 0.0
+        
+        self.bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        #if DEBUG
+        self.bannerView.adUnitID = Const.Google.MainBanner_DEBUG.ID
+        #else
+        self.bannerView.adUnitID = Const.Google.MainBanner.ID
+        #endif
+        self.bannerView.rootViewController = self
+        
+        let request = GADRequest()
+        #if DEBUG
+        request.testDevices = [ "2c4bfb4fb853b3d9b03c68578176d3a7" ]
+        #endif
+        self.bannerView.load(request)
+        self.bannerView.delegate = self
+    }
+    
+    /// 광고뷰 설정
+    private func setupAdView() {
+        self.bannerView.translatesAutoresizingMaskIntoConstraints = false
+        self.adView.addSubview(self.bannerView)
+        
+        self.bannerView.topAnchor.constraint(equalTo: self.adView.topAnchor).isActive = true
+        self.bannerView.leadingAnchor.constraint(equalTo: self.adView.leadingAnchor).isActive = true
+        self.bannerView.trailingAnchor.constraint(equalTo: self.adView.trailingAnchor).isActive = true
+        
+        
+        self.adViewHeight.constant = getSafeAreaInsets().bottom + 50.0
+        self.bannerView.alpha = 0.0
+        UIView.animate(withDuration: 0.2, animations: {
+            self.adView.layoutIfNeeded()
+        }) { (suceess) in
+            UIView.animate(withDuration: 0.2) {
+                self.bannerView.alpha = 1.0
+            }
+        }
     }
     
     /// SearchBar 설정
@@ -193,6 +271,8 @@ extension MainViewController {
         if self.searchController.isActive {
             self.searchController.isActive = false
         }
+        
+        self.tabBar.hideTabBar()
     }
     
     /// PageViewController 현재 페이지 설정
@@ -397,7 +477,6 @@ extension MainViewController: MainTabBarDelegate {
         if let vc = self.viewControllers[safe: self.currentIndex] as? WKWebViewController {
             vc.wkWebView.reload()
         }
-        
     }
     
     func urlBtnAction() {
@@ -413,4 +492,76 @@ extension MainViewController: MainTabBarDelegate {
     }
     
     
+}
+// MARK:- GADBannerViewDelegate
+extension MainViewController: GADBannerViewDelegate {
+    /// Tells the delegate an ad request loaded an ad.
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        log("adViewDidReceiveAd")
+        self.setupAdView()
+    }
+    
+    /// Tells the delegate an ad request failed.
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+        log("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+    
+    /// Tells the delegate that a full-screen view will be presented in response
+    /// to the user clicking on an ad.
+    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+        log("adViewWillPresentScreen")
+    }
+    
+    /// Tells the delegate that the full-screen view will be dismissed.
+    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
+        log("adViewWillDismissScreen")
+    }
+    
+    /// Tells the delegate that the full-screen view has been dismissed.
+    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+        log("adViewDidDismissScreen")
+    }
+    
+    /// Tells the delegate that a user click will open another app (such as
+    /// the App Store), backgrounding the current app.
+    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+        log("adViewWillLeaveApplication")
+    }
+}
+
+// MARK:- GADI
+extension MainViewController: GADInterstitialDelegate {
+    /// Tells the delegate an ad request succeeded.
+    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+        print("interstitialDidReceiveAd")
+        if self.interstitial.isReady {
+            self.interstitial.present(fromRootViewController: self)
+        }
+    }
+    
+    /// Tells the delegate an ad request failed.
+    func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
+        print("interstitial:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+    
+    /// Tells the delegate that an interstitial will be presented.
+    func interstitialWillPresentScreen(_ ad: GADInterstitial) {
+        print("interstitialWillPresentScreen")
+    }
+    
+    /// Tells the delegate the interstitial is to be animated off the screen.
+    func interstitialWillDismissScreen(_ ad: GADInterstitial) {
+        print("interstitialWillDismissScreen")
+    }
+    
+    /// Tells the delegate the interstitial had been animated off the screen.
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        print("interstitialDidDismissScreen")
+    }
+    
+    /// Tells the delegate that a user click will open another app
+    /// (such as the App Store), backgrounding the current app.
+    func interstitialWillLeaveApplication(_ ad: GADInterstitial) {
+        print("interstitialWillLeaveApplication")
+    }
 }
