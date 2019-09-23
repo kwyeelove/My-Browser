@@ -12,5 +12,11 @@ import CoreData
 
 @objc(Tab)
 public class Tab: NSManagedObject {
-
+    convenience init(context moc: NSManagedObjectContext, defaultSet: Bool = false ) {
+        self.init(context: moc)
+        if defaultSet {
+            self.url = "https://www.google.com"
+            self.name = "구글"
+        }
+    }
 }

@@ -22,6 +22,8 @@ class MyWKWebView: WKWebView {
         
         super.init(frame: frame, configuration: configuration)
         configuration.userContentController = userContentWithCookies()
+        
+        self.scrollView.backgroundColor = .white
     }
     
     required public init?(coder: NSCoder) {
@@ -47,14 +49,16 @@ extension MyWKWebView {
         self.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
-    public func openApp(withScheme urlScheme: String, moreString: String?) {
+    public func openApp(withScheme urlScheme: String, moreString: String?) -> Bool {
         guard let url = URL.init(string: urlScheme + (moreString ?? "")) else {
-            return
+            return false
         }
         
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            return true
         }
+        return false
     }
     
     public func callJavaScript(functionName: String) {

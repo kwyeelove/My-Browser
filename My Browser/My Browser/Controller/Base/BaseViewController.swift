@@ -26,6 +26,14 @@ class BaseViewController: UIViewController {
         self.navigationController?.setNavigationBackButton(title: "")
         self.loadingView = LoadingView.init(frame: self.view.frame)
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if #available(iOS 13.0, *) {
+            return .darkContent
+        } else {
+            return .lightContent
+        }
+    }
 }
 
 // MARK:- Loading View

@@ -71,12 +71,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
     /// HomeViewControlelr에 네비게이션 컨트롤러 설정
     private func setRootViewController() {
-        let navigationController = BaseNavigationController()
-        guard let homeVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: MainViewController.reusableIdentifier) as? MainViewController else { return }
-        navigationController.setViewControllers([homeVC], animated: false)
-        
-        guard let currentWindow = self.window else { return }
-        currentWindow.rootViewController = navigationController
+//        let navigationController = BaseNavigationController()
+//        guard let mainVC = UIStoryboard.init(name: Const.StoryBoard.Main.name, bundle: nil).instantiateViewController(withIdentifier: MainViewController.reusableIdentifier) as? MainViewController else { return }
+//        navigationController.setViewControllers([mainVC], animated: false)
+//        
+//        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        self.window?.rootViewController = navigationController
+//        self.window?.makeKeyAndVisible()
     }
 }
 

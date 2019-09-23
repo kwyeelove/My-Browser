@@ -10,6 +10,11 @@ import UIKit
 import CoreData
 import GoogleMobileAds
 
+protocol MainViewControllerDelegate {
+    func showSearchBar(animate: Bool)
+    func hideSearchBar(animate: Bool)
+}
+
 class MainViewController: BaseViewController {
     
     /// Tabbar Title의 양쪽 여백 (좌우 여백의 합 값)
@@ -51,6 +56,7 @@ class MainViewController: BaseViewController {
         var detailViewControllers = [UIViewController]()
         for item in self.tabItems {
             if let vc = UIStoryboard.init(name: Const.StoryBoard.Main.name, bundle: nil).instantiateViewController(withIdentifier: WKWebViewController.reusableIdentifier) as? WKWebViewController {
+                vc.mainDelegate = self
                 vc.url = item.value(forKey: Const.CoreData.Tab.url.name) as? String ?? ""
                 vc.name = item.value(forKey: Const.CoreData.Tab.name.name) as? String ?? ""
                 detailViewControllers.append(vc)
@@ -64,7 +70,9 @@ class MainViewController: BaseViewController {
     private var tabTitleWidths = [CGFloat]()
     
     
-    /// Search
+    /// Search Bar
+    var searchBar = UISearchBar()
+    /// Search Controller
     let searchController = UISearchController(searchResultsController: nil)
 
     /// 구글 전면 광고
@@ -74,10 +82,11 @@ class MainViewController: BaseViewController {
         super.viewDidLoad()
         let searchBar = UISearchBar()
         searchBar.showsCancelButton = true
-        searchBar.placeholder = "검색 또는 URL"
+        searchBar.placeholder = Const.Text.search_bar_placeholder.localized
         searchBar.delegate = self
         
         self.navigationController?.navigationItem.titleView = searchBar
+        self.view.backgroundColor = .white
         setUI()
     }
     
@@ -88,11 +97,18 @@ class MainViewController: BaseViewController {
 
 // MARK:- Private Functions
 extension MainViewController {
+    
     /// UI 초기화
     private func setUI() {
         // 저장된 tab 데이터 가져오기
         if let datas = CoreDataManager.loadAllCoreData(entity: Const.CoreData.Tab.entity.name) {
-            self.tabItems = datas
+            if datas.count <= 0 {
+                let defaultData = Tab(context: self.context, defaultSet: true)
+                CoreDataManager.saveCoreData(defaultData)
+                self.tabItems = [defaultData]
+            } else {
+                self.tabItems = datas
+            }
             self.setMenuBarViewWidth()
         }
         
@@ -105,20 +121,23 @@ extension MainViewController {
         // 라인뷰 초기화
         initLineView()
         
-        // 라인 위치 설정
-        setLineView(index: 0, animate: false)
-        
         // PageVC를 이용하여 Detail VC 설정
         initPageControll()
         
-        // 하단 TabBar 설정
-        initTabBar()
+        // 최소 실행시 Tab은 0번째 index로 고정할꺼니깐 라인/Page도 0번째
+        // page 설정
+        setCurrentPage(index: 0)
+        // 라인 위치 설정
+        setLineView(index: 0, animate: false)
         
-        // 하단 광고뷰 초기화
-        initAdView()
-        
-        // 전면광고 초기화
-        initInterstitial()
+//        // 하단 TabBar 설정
+//        initTabBar()
+//
+//        // 하단 광고뷰 초기화
+//        initAdView()
+//
+//        // 전면광고 초기화
+//        initInterstitial()
     }
     /// 전면광고 초기화
     private func initInterstitial() {
@@ -181,17 +200,11 @@ extension MainViewController {
     }
     
     /// SearchBar 설정
-    private func setupSearchBar() {
-        self.searchController.delegate = self
-        self.searchController.searchResultsUpdater = self
-        self.searchController.obscuresBackgroundDuringPresentation = false
-        self.searchController.searchBar.placeholder = Const.Text.search_bar_placeholder.localized
-        self.searchController.searchBar.delegate = self
-        self.searchController.searchBar.returnKeyType = .go
-        self.searchController.searchBar.keyboardType = .URL
-        
-        self.navigationController?.navigationItem.searchController = self.searchController
-        definesPresentationContext = true
+    private func setupSearchBar() { 
+        self.searchBar.showsCancelButton = true
+        self.searchBar.placeholder = Const.Text.search_bar_placeholder.localized
+        self.searchBar.delegate = self
+        self.navigationController?.navigationItem.titleView = self.searchBar
     }
     
     /// Tab명에 따른 매장 MenuBarView의 width 계산
@@ -261,18 +274,17 @@ extension MainViewController {
         
         self.pageContainer.delegate = self
         self.pageContainer.dataSource = self
-        self.pageContainer.view.backgroundColor = .clear
+        self.pageContainer.view.backgroundColor = .white
         self.pageContainer.view.frame.size = self.pageView.frame.size
+        self.pageView.backgroundColor = .white
         self.pageView.addSubview(self.pageContainer.view)
-    }
-    
-    @IBAction private func pageViewTapGesture(_ gesture: UITapGestureRecognizer) {
-        print("pageView tap!")
-        if self.searchController.isActive {
-            self.searchController.isActive = false
-        }
         
-        self.tabBar.hideTabBar()
+        // 좌우 스와이프 막기.
+        for view in self.pageContainer.view.subviews {
+            if let scrollView = view as? UIScrollView {
+                scrollView.isScrollEnabled = false
+            }
+        }
     }
     
     /// PageViewController 현재 페이지 설정
@@ -300,6 +312,7 @@ extension MainViewController {
         self.showLoading()
         self.tabItems.append(item)
         if let vc = UIStoryboard.init(name: Const.StoryBoard.Main.name, bundle: nil).instantiateViewController(withIdentifier: WKWebViewController.reusableIdentifier) as? WKWebViewController {
+            vc.mainDelegate = self
             vc.url = item.value(forKey: Const.CoreData.Tab.url.name) as? String ?? ""
             vc.name = item.value(forKey: Const.CoreData.Tab.name.name) as? String ?? ""
             self.viewControllers.append(vc)
@@ -395,7 +408,8 @@ extension MainViewController: UIPageViewControllerDataSource {
         if let currentIndex: Int = self.viewControllers.firstIndex(of: viewController) {
             if currentIndex <= 0 {
                 // 제일 마지막으로 이동
-                return self.viewControllers[self.viewControllers.count - 1]
+                // return self.viewControllers[self.viewControllers.count - 1]
+                return nil
             }
             let previousIndex = abs((currentIndex - 1) % self.viewControllers.count)
             return self.viewControllers[previousIndex]
@@ -408,7 +422,8 @@ extension MainViewController: UIPageViewControllerDataSource {
         if let currentIndex: Int = self.viewControllers.firstIndex(of: viewController) {
             if currentIndex >= self.viewControllers.count - 1 {
                 // 제일 처음으로 이동
-                return self.viewControllers[0]
+                // return self.viewControllers[0]
+                return nil
             }
             let nextIndex = abs((currentIndex + 1) % self.viewControllers.count)
             return self.viewControllers[nextIndex]
@@ -420,22 +435,7 @@ extension MainViewController: UIPageViewControllerDataSource {
 
 // MARK:- Button Actions
 extension MainViewController {
-    @IBAction func addTabBarBtnAction(_ sender: UIButton) {
         
-        
-        let entity = NSEntityDescription.entity(forEntityName: Const.CoreData.Tab.entity.name, in: self.context)!
-        let tab = NSManagedObject(entity: entity, insertInto: self.context)
-        
-        tab.setValue("네이버", forKeyPath: Const.CoreData.Tab.name.name)
-        tab.setValue("http://www.naver.com", forKeyPath: Const.CoreData.Tab.url.name)
-        
-        do {
-            try self.context.save()
-            self.addTabItem(tab)
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-    }
 }
 
 // MARK: - UISearchBar Delegate
@@ -563,5 +563,16 @@ extension MainViewController: GADInterstitialDelegate {
     /// (such as the App Store), backgrounding the current app.
     func interstitialWillLeaveApplication(_ ad: GADInterstitial) {
         print("interstitialWillLeaveApplication")
+    }
+}
+
+// MARK:- MainViewController Delegate
+extension MainViewController: MainViewControllerDelegate {
+    func showSearchBar(animate: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: animate)
+    }
+    
+    func hideSearchBar(animate: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animate)
     }
 }

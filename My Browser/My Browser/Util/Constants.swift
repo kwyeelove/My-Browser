@@ -17,7 +17,21 @@ extension Const {
         back = "common_txt_back",
         search_bar_placeholder = "searchbar_placeholder"
         
+        
         var localized: String { return self.rawValue.localizaed }
+    }
+}
+
+// MARK:- Font
+extension Const {
+    enum Font: String { case
+        Apple_gothic_regular = "AppleSDGothicNeo-Regular",
+        Apple_gothic_medium = "AppleSDGothicNeo-Medium",
+        Apple_gothic_bold = "AppleSDGothicNeo-Bold",
+        Apple_gothic_thin = "AppleSDGothicNeo-Thin"
+        
+        var name: String { return self.rawValue }
+        
     }
 }
 

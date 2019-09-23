@@ -14,11 +14,15 @@ class TabCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.backgroundColor = .white
+        self.contentView.backgroundColor = .clear
+        self.titleLbl.textColor = .black
+        self.titleLbl.text = ""
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.titleLbl.textColor = .black
         self.titleLbl.text = ""
     }
 
