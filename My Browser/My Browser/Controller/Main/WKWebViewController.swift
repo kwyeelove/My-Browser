@@ -83,26 +83,26 @@ extension WKWebViewController: UIScrollViewDelegate {
         let contentOffset = scrollView.contentOffset.y
         if (velocity.y>0 && contentOffset > 50.0) {
             //Code will work without the animation block.I am using animation block incase if you want to set any delay to it.
-            UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions(), animations: {
+            UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions(), animations: {
                 self.mainDelegate?.hideSearchBar(animate: true)
-                print("Hide")
+                print("scrollViewWillEndDragging -> Hide")
             }, completion: nil)
             
         } else if (velocity.y<=0 && contentOffset <= 50.0) {
-            UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions(), animations: {
+            UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions(), animations: {
                 self.mainDelegate?.showSearchBar(animate: true)
-                print("show")
+                print("scrollViewWillEndDragging -> show")
             }, completion: nil)
         }
     }
     
-    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        let contentOffset = scrollView.contentOffset.y
-        if (contentOffset <= 50.0) {
-            UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions(), animations: {
-                self.mainDelegate?.showSearchBar(animate: true)
-                print("show")
-            }, completion: nil)
-        }
-    }
+//    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+//        let contentOffset = scrollView.contentOffset.y
+//        if (contentOffset <= 50.0) {
+//            UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions(), animations: {
+//                self.mainDelegate?.showSearchBar(animate: true)
+//                print("scrollViewWillBeginDecelerating -> show")
+//            }, completion: nil)
+//        }
+//    }
 }

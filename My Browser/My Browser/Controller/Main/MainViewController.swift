@@ -200,13 +200,26 @@ extension MainViewController {
     }
     
     /// SearchBar 설정
-    private func setupSearchBar() { 
+    private func setupSearchBar() {
+        self.searchBar = self.searchController.searchBar
         self.searchBar.showsCancelButton = true
         self.searchBar.text = "왜 안되는거야~~~"
         self.searchBar.placeholder = Const.Text.search_bar_placeholder.localized
         self.searchBar.delegate = self
         self.searchBar.sizeToFit()
-        self.navigationController?.navigationItem.titleView = self.searchBar
+        
+        self.searchController.delegate = self
+        self.searchController.searchResultsUpdater = self
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        self.searchController.searchBar.placeholder = Const.Text.search_bar_placeholder.localized
+        self.searchController.searchBar.delegate = self
+        self.searchController.searchBar.returnKeyType = .go
+        self.searchController.searchBar.keyboardType = .URL
+        
+        self.navigationItem.titleView = self.searchController.searchBar
+//        self.searchController.hidesNavigationBarDuringPresentation = false
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.largeTitleDisplayMode = .never
     }
     
     /// Tab명에 따른 매장 MenuBarView의 width 계산
@@ -443,7 +456,7 @@ extension MainViewController {
 // MARK: - UISearchBar Delegate
 extension MainViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        print("")
+        print("searchBar selectedScopeButtonIndexDidChange")
     }
 }
 
@@ -451,7 +464,7 @@ extension MainViewController: UISearchBarDelegate {
 extension MainViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = self.searchController.searchBar
-        print("")
+        print("updateSearchResults")
     }
 }
 
