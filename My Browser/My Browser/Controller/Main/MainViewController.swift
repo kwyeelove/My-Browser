@@ -113,7 +113,7 @@ extension MainViewController {
         }
         
         // SearchBar setup
-//        setupSearchBar()
+        setupSearchBar()
         
         // 상단 CollectionView 설정
         setupCollectionView()
@@ -202,8 +202,10 @@ extension MainViewController {
     /// SearchBar 설정
     private func setupSearchBar() { 
         self.searchBar.showsCancelButton = true
+        self.searchBar.text = "왜 안되는거야~~~"
         self.searchBar.placeholder = Const.Text.search_bar_placeholder.localized
         self.searchBar.delegate = self
+        self.searchBar.sizeToFit()
         self.navigationController?.navigationItem.titleView = self.searchBar
     }
     

@@ -25,29 +25,13 @@ class CoreDataManager {
         }
     }
     
-    static func saveCoreData(entity: String, name: String, value: String) {
-        if let entity = NSEntityDescription.entity(forEntityName: entity, in: self.context) {
-            let objc = NSManagedObject(entity: entity, insertInto: self.context)
-            objc.setValue(value, forKeyPath: name)
-            do {
-                try self.context.save()
-            } catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
-            }
-        }
-    }
-    
     static func saveCoreData( _ tab: Tab) {
-        if let entity = NSEntityDescription.entity(forEntityName: Const.CoreData.Tab.entity.name, in: self.context) {
-            let objc = NSManagedObject(entity: entity, insertInto: self.context)
-            
-            objc.setValue(tab.url, forKey: Const.CoreData.Tab.url.name)
-            objc.setValue(tab.name, forKey: Const.CoreData.Tab.name.name)
-            do {
-                try self.context.save()
-            } catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
-            }
+        tab.setValue(tab.url, forKey: Const.CoreData.Tab.url.name)
+        tab.setValue(tab.name, forKey: Const.CoreData.Tab.name.name)
+        do {
+            try self.context.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
         }
     }
     

@@ -15,8 +15,8 @@ public class Tab: NSManagedObject {
     convenience init(context moc: NSManagedObjectContext, defaultSet: Bool = false ) {
         self.init(context: moc)
         if defaultSet {
-            self.url = "https://www.google.com"
-            self.name = "구글"
+            self.url = Const.CoreData.Tab.defaultURL.name
+            self.name = Const.CoreData.Tab.defaultName.name.localizaed
         }
     }
 }

@@ -8,6 +8,7 @@
 "common_txt_confirm" = "Confirm";
 "common_txt_close" = "Close";
 "common_txt_back" = "Back";
-
-
+// Search Bar
 "searchbar_placeholder" = "Search or URL";
+// 코어데이터 Default 이름
+"common_default_name" = "Google";

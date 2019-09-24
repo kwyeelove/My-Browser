@@ -68,7 +68,9 @@ extension Const {
         enum Tab: String { case
             entity = "Tab",
             name = "name",
-            url = "url"
+            url = "url",
+            defaultURL = "https://www.google.com",
+            defaultName = "common_default_name"
             var name: String { return self.rawValue }
         }
     }
