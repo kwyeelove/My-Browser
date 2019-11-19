@@ -85,7 +85,6 @@ class MainViewController: BaseViewController {
         searchBar.placeholder = Const.Text.search_bar_placeholder.localized
         searchBar.delegate = self
         
-        self.navigationController?.navigationItem.titleView = searchBar
         self.view.backgroundColor = .white
         setUI()
     }

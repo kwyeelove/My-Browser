@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		840114A42334B34C0053D062 /* PopupGoogleAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840114A32334B34C0053D062 /* PopupGoogleAdView.swift */; };
 		840114A62334B3580053D062 /* PopupGoogleAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840114A52334B3580053D062 /* PopupGoogleAdView.xib */; };
+		8410FBCC2339E74F00ECCF89 /* BaseSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410FBCB2339E74F00ECCF89 /* BaseSearchBar.swift */; };
 		84810471233379DB00EA51FB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84810473233379DB00EA51FB /* Localizable.strings */; };
 		8497EE872331EF0700909FE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F6C47F2331D09200BC5317 /* Main.storyboard */; };
 		8497EE892331EF3200909FE4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8497EE882331EF3200909FE4 /* Launch Screen.storyboard */; };
@@ -54,6 +55,7 @@
 		68375EB6B38602923DD4E59A /* Pods-My Browser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My Browser.debug.xcconfig"; path = "Target Support Files/Pods-My Browser/Pods-My Browser.debug.xcconfig"; sourceTree = "<group>"; };
 		840114A32334B34C0053D062 /* PopupGoogleAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupGoogleAdView.swift; sourceTree = "<group>"; };
 		840114A52334B3580053D062 /* PopupGoogleAdView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupGoogleAdView.xib; sourceTree = "<group>"; };
+		8410FBCB2339E74F00ECCF89 /* BaseSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSearchBar.swift; sourceTree = "<group>"; };
 		84810472233379DB00EA51FB /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		84810474233379DD00EA51FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		84810475233379DE00EA51FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -117,6 +119,14 @@
 				3080EB257B15E4253D51422C /* Pods-My Browser.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		8410FBCA2339E72F00ECCF89 /* Search Bar */ = {
+			isa = PBXGroup;
+			children = (
+				8410FBCB2339E74F00ECCF89 /* BaseSearchBar.swift */,
+			);
+			path = "Search Bar";
 			sourceTree = "<group>";
 		};
 		8497EE8C23321E2400909FE4 /* Base */ = {
@@ -205,6 +215,7 @@
 		84F6C4802331D09200BC5317 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				8410FBCA2339E72F00ECCF89 /* Search Bar */,
 				84F6C4812331D09200BC5317 /* Popup */,
 				84F6C48C2331D09200BC5317 /* Main TabBar */,
 				84F6C48F2331D09200BC5317 /* Toast View */,
@@ -429,6 +440,7 @@
 				84F6C46C2331D01300BC5317 /* My_Browser.xcdatamodeld in Sources */,
 				8497EE922333065000909FE4 /* CoreDataManager.swift in Sources */,
 				84F6C49E2331D09200BC5317 /* BaseViewController.swift in Sources */,
+				8410FBCC2339E74F00ECCF89 /* BaseSearchBar.swift in Sources */,
 				84F6C4B22331D09200BC5317 /* LoadingView.swift in Sources */,
 				84F6C4AB2331D09200BC5317 /* PopupOneButtonView.swift in Sources */,
 				84F6C4AC2331D09200BC5317 /* PopupImageView.swift in Sources */,

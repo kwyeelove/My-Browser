@@ -26,8 +26,8 @@ class BaseNavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 네비게이션 하얀색
-        setBackgroundColor(color: .white)
+        
+        setBackgroundClear()
         self.navigationItem.setHidesBackButton(true, animated: false)
         self.interactivePopGestureRecognizer?.isEnabled = true
         self.interactivePopGestureRecognizer?.delegate = nil
